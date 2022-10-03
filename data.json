@@ -40,11 +40,5 @@
     "classId": "7",
     "favColor": "green",
     "hobby": "running"
-  },
-  {
-    "name": "Test User 6",
-    "classId": "14",
-    "favColor": "black",
-    "hobby": "helping"
   }
 ]
