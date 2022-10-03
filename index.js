@@ -1,14 +1,33 @@
-const { request } = require("express")
 const express = require("express")
-const { getCandidates, getSingleCandidate ,getSingleCandidates, getFavoriteColor, getAlphabeticalOrder, getCandidatesHobbies} = require('./src/candidates')
+const cors = require("cors")
+const {
+  getCandidates,
+  getSingleCandidate,
+  getFavoriteColor,
+  getAlphabeticalOrder,
+  getCandidatesHobbies,
+  createCandidate,
+  updateCandidate,
+  deleteSingleCandidate,
+} = require("./src/candidates")
 const port = 3000
 const app = express()
+app.use(cors())
+app.use(express.json())
 
+app.get("/candidates", getCandidates)
+app.get("/candidate/:classId", getSingleCandidate)
 app.get("/candidates/hobbies/", getCandidatesHobbies)
 app.get("/candidates/ordered/", getAlphabeticalOrder)
 app.get("/candidate/color/:myColor", getFavoriteColor)
-app.get("/candidate/id/:candidateId", getSingleCandidates)
-app.get("/candidate", getSingleCandidate)
-app.get("/candidates", getCandidates)
-// app.get('/', (request,response) => getCandidates((request,response)))
-app.listen(port, console.log("listening on http://localhost:", port))
+
+// posts
+app.post("/candidate", createCandidate)
+
+// patch routes updateCandidate
+app.put("/candidate", updateCandidate)
+
+// delete routes deleteCandidate
+app.delete("/candidate/:classId", deleteSingleCandidate)
+
+app.listen(port, console.log("listening on", port))
