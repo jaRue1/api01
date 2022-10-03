@@ -10,6 +10,7 @@ const {
   updateCandidate,
   deleteSingleCandidate,
 } = require("./src/candidates")
+
 const port = 3000
 const app = express()
 app.use(cors())

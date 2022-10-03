@@ -11,13 +11,10 @@ exports.getCandidates = (request, response) => {
 }
 exports.getSingleCandidate = async (request, response) => {
   const { classId } = request.params
-  console.log(request.params.classId)
-  console.log(classId)
 
   const candidate = candidates.find(
     (candidate) => candidate.classId === classId
   )
-  console.log(candidate)
 
   if (candidate) {
     response.status(200).json({
